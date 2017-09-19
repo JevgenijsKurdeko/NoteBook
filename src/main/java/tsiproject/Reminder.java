@@ -3,15 +3,6 @@ package tsiproject;
 public class Reminder extends Note {
 
     public String time;
-    public String text;
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
 
     public String getTime() {
         return time;
@@ -25,7 +16,7 @@ public class Reminder extends Note {
     public String toString() {
         return "Reminder{" +
                 "id=" + getId() +
-                "text='" + text + '\'' +
+                "text='" + getNote() + '\'' +
                 "time='" + time + '\'' +
                 '}';
     }

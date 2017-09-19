@@ -30,7 +30,7 @@ public class NoteBook {
     public void createText(String text, String time){
         Reminder t = new Reminder();
         t.setTime(time);
-        t.setText(text);
+        t.setNote(text);
         records.add(t);
 
     }
