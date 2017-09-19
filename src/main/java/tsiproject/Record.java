@@ -1,11 +1,10 @@
 package tsiproject;
 
-public class Record {
-    private static int counter = 0;//eto peremennaja
+public abstract class Record {
+    private static int counter = 0;
     private int id;
-    private String firstName;
-    private String lastName;
-    private String phone;
+
+
 
     public Record() {
         counter++;
@@ -16,38 +15,4 @@ public class Record {
         return id;
     }
 
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName(String lastName) {
-        return this.lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @Override
-    public String toString() {
-        return "Record " +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phone='" + phone + '\'' +
-                ' ';
-    }
 }
