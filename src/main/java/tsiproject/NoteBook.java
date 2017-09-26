@@ -1,12 +1,15 @@
 package tsiproject;
 
 import asg.cliche.Command;
+import asg.cliche.Shell;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NoteBook {
-    private List<Record> records = new ArrayList<>();
+    private final List<Record> records = new ArrayList<>();
+    private Shell parentShell; // need for cliche to allow subshells
+
 
     @Command
     public void createPerson(String firstName, String lastName, String email, String... phones){
@@ -15,7 +18,6 @@ public class NoteBook {
         r.setLastName(lastName);
         r.addPhones(phones);//телефонов может быть много у контакта, по-этому мы сделали список телефонов
         r.setEmail(email);
-
         records.add(r);
     }
     @Command
@@ -23,16 +25,21 @@ public class NoteBook {
         Note n = new Note();
         n.setNote(note);
         records.add(n);
-
     }
 
     @Command
-    public void createText(String text, String time){
+    public void createReminder(String text, String time){
         Reminder t = new Reminder();
         t.setTime(time);
         t.setNote(text);
         records.add(t);
-
+    }
+    @Command
+    public void createAlarm(String alarmTime, String note){
+        Alarm a= new Alarm();
+        a.setNote(note);
+        a.setTimeAlarm(alarmTime);
+        records.add(a);
     }
 
     @Command
@@ -45,9 +52,20 @@ public class NoteBook {
             }
         }
     }
+    @Command
+    public List<Record> find(String str){
+        List<Record> result = new ArrayList<>();
+        for (Record r: records){
+            if (r.contains(str)){
+                result.add(r);
+            }
+        }
+        return result;
+    }
 
     @Command
     public List<Record> List(){
         return records;
     }
 }
+

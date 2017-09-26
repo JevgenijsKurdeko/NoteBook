@@ -46,5 +46,24 @@ public class Person extends Record {
                 ", email='" + email + '\'' +
                 ' ';
     }
+
+    @Override
+    public boolean contains(String str) {
+        String lowerCase = str.toLowerCase();
+        if (firstName.toLowerCase().contains(lowerCase)){
+            return true;
+        } else if (lastName.toLowerCase().contains(lowerCase)){
+            return  true;
+        } else if (email.toLowerCase().contains(lowerCase)){
+            return true;
+        } else {
+            for (String p: phones){
+                if (p.contains(lowerCase)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
 

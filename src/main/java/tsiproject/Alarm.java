@@ -1,19 +1,15 @@
 package tsiproject;
 
-import asg.cliche.Command;
-import asg.cliche.Param;
+public class Alarm extends Note implements Expirable{
 
-public class Reminder extends Note implements Expirable {
+    public String timeAlarm;
 
-    public String time;
-
-    public String getTime() {
-        return time;
+    public String getTimeAlarm() {
+        return timeAlarm;
     }
 
-    @Command
-    public void setTime(@Param(name = "time") String time) {
-        this.time = time;
+    public void setTimeAlarm(String timeAlarm) {
+        this.timeAlarm = timeAlarm;
     }
 
     @Override
@@ -21,15 +17,15 @@ public class Reminder extends Note implements Expirable {
         return "Reminder{" +
                 "id=" + getId() +
                 "text='" + getNote() + '\'' +
-                "time='" + time + '\'' +
+                "time='" + timeAlarm + '\'' +
                 '}';
     }
 
     @Override
     public boolean contains(String str) {
-        if (super.contains(str)){
+        if(super.contains(str)){
             return true;
-        } else if (time.contains(str)){
+        } else if(timeAlarm.contains(str)){
             return true;
         }
         return false;
